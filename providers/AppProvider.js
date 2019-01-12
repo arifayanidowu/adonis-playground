@@ -24,8 +24,8 @@ class AppProvider extends ServiceProvider {
    * @return {void}
    */
   boot() {
-    Request.getter("time", async function() {
-      return await new Date().getTime();
+    Request.getter("time", function() {
+      return new Date().getTime();
     });
   }
 }

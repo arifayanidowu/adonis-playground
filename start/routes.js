@@ -14,9 +14,17 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+
 const Route = use("Route");
 
 Route.get("/", "JobController.home").as("home");
 
-Route.on("/register").render("auth.register");
-Route.on("/login").render("auth.login");
+Route.on("/register")
+  .render("auth.register")
+  .as("register");
+
+Route.post("register", "UserController.create").validator("CreateUser");
+
+Route.on("/login")
+  .render("auth.login")
+  .as("login");

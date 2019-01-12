@@ -1,25 +1,38 @@
 @layout('layouts.app')
 
 @section('title')
-  JobPostr &mdash; Login
+  JobPostr &mdash; Join Now
 @endsection
 
 @section('content')
-  <form action="">
+<h1 class="text-center">Join Now</h1>
+<div class="card card-body">
+  <form action="{{ route(UserController.create) }}" method="POST">
+      {{ csrfField() }}
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Enter Username..." autofocus>
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" name="username" value="{{ old('username', '') }}" placeholder="Enter Username..." autofocus>
+        @if(hasErrorFor('username'))
+          <span class="text-danger">{{ getErrorFor('username') }}</span>
+        @endif
       </div>
       <div class="form-group">
-        <label for="email">Username</label>
-        <input type="email" class="form-control" name="email" placeholder="Enter Email...">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" value="{{ old('email', '') }}" placeholder="Enter Email...">
+        @if(hasErrorFor('email'))
+          <span class="text-danger">{{ getErrorFor('email') }}</span>
+        @endif
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Enter Password...">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control " name="password" value="{{ old('password', '') }}" placeholder="Enter Password...">
+        @if(hasErrorFor('password'))
+          <span class="text-danger">{{ getErrorFor('password') }}</span>
+        @endif
       </div>
       <div>
-          <input type="submit" value="Register" class="btn btn-primary">
+          <input type="submit" value="Join Now" class="btn btn-primary">
       </div>
   </form>
+  </div>
 @endsection
