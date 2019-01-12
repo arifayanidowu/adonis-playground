@@ -10,6 +10,18 @@ class UserController {
     await auth.login(user);
     return response.redirect("/");
   }
+
+  async login({ auth, request, response, session }) {
+    const { email, password } = request.all();
+
+    try {
+      await auth.attempt(email, password);
+      return response.redirect("/");
+    } catch (e) {
+      session.flash({ loginError: "Invalid Credentials." });
+      return response.redirect("back");
+    }
+  }
 }
 
 module.exports = UserController;
