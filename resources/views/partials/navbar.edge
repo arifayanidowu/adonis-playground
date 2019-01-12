@@ -11,10 +11,13 @@
                     <a class="nav-link" href="{{ route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 @loggedIn
+                <li class="nav-item">
+                    <a class="nav-link" href="/post">Jobs</a>
+                </li>
                  <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth.user.username }}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
                 @else 
