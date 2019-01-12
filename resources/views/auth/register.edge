@@ -12,18 +12,18 @@
       <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" class="form-control" name="username" value="{{ old('username', '') }}" placeholder="Enter Username..." autofocus>
-          {{ elIf('<span class="text-danger">$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+          {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" class="form-control" name="email" value="{{ old('email', '') }}" placeholder="Enter Email...">
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+            {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" class="form-control " name="password" value="{{ old('password', '') }}" placeholder="Enter Password...">
         @if(hasErrorFor('password'))
-          <span class="text-danger">{{ getErrorFor('password') }}</span>
+          <span class="alert alert-danger">{{ getErrorFor('password') }}</span>
         @endif
       </div>
       <div>

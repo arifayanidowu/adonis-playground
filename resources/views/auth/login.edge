@@ -6,10 +6,13 @@
 
 @section('content')
   <h1 class="text-center">Login</h1>
-  @if(flashMessage('loginError'))
-            <span class="text-danger">{{ flashMessage('loginError') }}</span>
+    <div class="card card-body">
+        @if(flashMessage('loginError'))
+            <div class="alert alert-danger" role="alert">
+            {{ flashMessage('loginError') }}
+            </div>
         @endif
-  <div class="card card-body">
+
         <form action="{{ route('UserController.login') }}" method="POST">
           {{ csrfField() }}
         
