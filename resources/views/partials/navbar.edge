@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item {{ route('home') ? 'active' : '' }}">
+                <li class="nav-item {{ request.url() == '/' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 @loggedIn
-                <li class="nav-item">
+                <li class="nav-item {{ request.url() == '/post' ? 'active' : '' }}">
                     <a class="nav-link" href="/post">Jobs</a>
                 </li>
                  <li class="nav-item dropdown">
@@ -21,10 +21,10 @@
                     </div>
                 </li>
                 @else 
-                <li class="nav-item">
+            <li class="nav-item {{ request.url() == '/login' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request.url() == '/register' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
                  
