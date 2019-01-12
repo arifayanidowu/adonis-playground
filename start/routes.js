@@ -19,9 +19,7 @@ const Route = use("Route");
 
 Route.get("/", "JobController.home").as("home");
 
-Route.on("/register")
-  .render("auth.register")
-  .as("register");
+Route.get("/register", "JobController.register").as("register");
 
 Route.post("/register", "UserController.create").validator("CreateUser");
 

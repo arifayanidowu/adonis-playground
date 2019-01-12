@@ -12,7 +12,7 @@ class CreateUser {
 
   get messages() {
     return {
-      required: "whoops!, {{ field }} is required.",
+      required: "{{ field }} is required.",
       unique: "{{ field }} already exists."
     };
   }
