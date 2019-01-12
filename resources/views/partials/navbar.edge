@@ -10,13 +10,14 @@
                 <li class="nav-item {{ route('home') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                @loggedIn
+                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
-                @loggedIn
+                @else 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth.user.username }}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -25,6 +26,7 @@
                 </li>  
                 @endloggedIn
                 
+       
             </ul>
         </div>
     </div>
