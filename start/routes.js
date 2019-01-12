@@ -26,6 +26,7 @@ Route.post("/register", "UserController.create").validator("CreateUser");
 Route.on("/login")
   .render("auth.login")
   .as("login");
+Route.post("/login", "UserController.login").validator("LoginUser");
 
 Route.get("/logout", async ({ auth, response }) => {
   await auth.logout();
