@@ -23,7 +23,7 @@ Route.on("/register")
   .render("auth.register")
   .as("register");
 
-Route.post("register", "UserController.create").validator("CreateUser");
+Route.post("/register", "UserController.create").validator("CreateUser");
 
 Route.on("/login")
   .render("auth.login")
