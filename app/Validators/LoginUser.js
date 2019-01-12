@@ -16,7 +16,7 @@ class LoginUser {
   }
 
   async fails(error) {
-    this.ctx.sessions.withErrors(error).flashAll();
+    this.ctx.session.withErrors(error).flashAll();
 
     return this.ctx.response.redirect("back");
   }
