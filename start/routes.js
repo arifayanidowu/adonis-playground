@@ -44,4 +44,6 @@ Route.group(() => {
   Route.post("/update/:id", "JobController.update")
     .as("update")
     .validator("CreateJob");
-}).prefix("/post");
+})
+  .prefix("/post")
+  .middleware(["find"]);

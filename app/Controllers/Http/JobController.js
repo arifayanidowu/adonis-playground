@@ -37,9 +37,7 @@ class JobController {
     return response.redirect("/post");
   }
 
-  async destroy({ response, session, params }) {
-    const job = await Job.find(params.id);
-
+  async destroy({ response, session, request: { job } }) {
     await job.delete();
 
     session.flash({ message: "Your Job has been removed" });
@@ -47,14 +45,12 @@ class JobController {
     return response.redirect("back");
   }
 
-  async edit({ view, params }) {
-    const job = await Job.find(params.id);
+  async edit({ view, request: { job } }) {
     return view.render("edit", { job: job });
   }
 
-  async update({ response, request, session, params }) {
-    const job = await Job.find(params.id);
-
+  async update({ response, request, session }) {
+    const { job } = request;
     job.title = request.all().title;
     job.link = request.all().link;
     job.description = request.all().description;
