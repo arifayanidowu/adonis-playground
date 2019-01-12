@@ -7,21 +7,17 @@
 @section('content')
 <h1 class="text-center">Join Now</h1>
 <div class="card card-body">
-  <form action="{{ route(UserController.create) }}" method="POST">
+  <form action="{{ route('UserController.create') }}" method="POST">
       {{ csrfField() }}
       <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" class="form-control" name="username" value="{{ old('username', '') }}" placeholder="Enter Username..." autofocus>
-        @if(hasErrorFor('username'))
-          <span class="text-danger">{{ getErrorFor('username') }}</span>
-        @endif
+          {{ elIf('<span class="text-danger">$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" class="form-control" name="email" value="{{ old('email', '') }}" placeholder="Enter Email...">
-        @if(hasErrorFor('email'))
-          <span class="text-danger">{{ getErrorFor('email') }}</span>
-        @endif
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
