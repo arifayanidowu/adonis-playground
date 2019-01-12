@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,9 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route");
 
-Route.on('/').render('welcome').as('home')
+Route.get("/", "JobController.home").as("home");
+
+Route.on("/register").render("auth.register");
+Route.on("/login").render("auth.login");
