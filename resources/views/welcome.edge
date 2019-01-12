@@ -1,13 +1,13 @@
 @layout('layouts.app')
 
 @section('title')
-Home &mdash; Welcome to Jobpostr
+Home &mdash; Welcome to JobPostr
 @endsection
 
 
 @section('content')
   <div class="container">
-    <h1 class="text-center mt-3">All Jobs</h1>
+  <h1 class="text-center mt-3">All Jobs {{ time() }}</h1>
     <hr class="hr">
     <ul class="list-group">
       @each(job in jobs)

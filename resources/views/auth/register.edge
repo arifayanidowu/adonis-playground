@@ -1,0 +1,25 @@
+@layout('layouts.app')
+
+@section('title')
+  JobPostr &mdash; Login
+@endsection
+
+@section('content')
+  <form action="">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Enter Username..." autofocus>
+      </div>
+      <div class="form-group">
+        <label for="email">Username</label>
+        <input type="email" class="form-control" name="email" placeholder="Enter Email...">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Enter Password...">
+      </div>
+      <div>
+          <input type="submit" value="Register" class="btn btn-primary">
+      </div>
+  </form>
+@endsection
