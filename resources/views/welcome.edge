@@ -6,14 +6,14 @@ Home &mdash; Welcome to JobPostr
 
 
 @section('content')
-  <div class="container">
+  <div class="container mb-4">
   <h1 class="text-center mt-3">All Jobs</h1>
     <hr class="hr">
     <ul class="list-group">
       @each(job in jobs)
       <li class="list-group-item">{{ job.title }}</li>
       <li class="list-group-item"><a href="{{ job.link }}" target="_blank">{{ job.link }}</a></li>
-      <li class="list-group-item">{{ job.description }}</li>
+      <li class="list-group-item mb-4">{{ job.description }}</li>
       @endeach
     </ul>
   </div>

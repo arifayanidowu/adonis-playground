@@ -26,9 +26,22 @@ Route.post("/register", "UserController.create").validator("CreateUser");
 Route.on("/login")
   .render("auth.login")
   .as("login");
+
 Route.post("/login", "UserController.login").validator("LoginUser");
 
 Route.get("/logout", async ({ auth, response }) => {
   await auth.logout();
   return response.redirect("/");
 });
+
+Route.get("/post", "JobController.userIndex").as("jobs");
+
+Route.post("/post", "JobController.create").validator("CreateJob");
+
+Route.group(() => {
+  Route.get("/delete/:id", "JobController.destroy").as("delete");
+  Route.get("/edit/:id", "JobController.edit").as("edit");
+  Route.post("/update/:id", "JobController.update")
+    .as("update")
+    .validator("CreateJob");
+}).prefix("/post");

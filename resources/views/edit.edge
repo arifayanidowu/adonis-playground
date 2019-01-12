@@ -1,0 +1,49 @@
+@layout('layouts.app')
+
+@section('title')
+  JobPostr &mdash; Edit a Job
+@endsection
+
+
+@section('content')
+  <h1 class="text-center text-muted">Edit Job</h1>
+
+    <card class="card-body">
+        @if(flashMessage('message'))
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            {{ flashMessage('message') }}
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+        @endif
+
+        <form action="{{ route('JobController.update', {id: job.id}) }}" method="POST">
+            {{ csrfField() }}
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Job Title:</label>
+                <input type="text" class="form-control" name="title" value="{{ job.title }}" placeholder="Enter Job Title..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Link URL:</label>
+                <input type="text" class="form-control" name="link" value="{{ job.link }}" placeholder="Enter Job Link..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('link'), hasErrorFor('link')) }}
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Job Description:</label>
+                <input type="text" class="form-control" name="description" value="{{ job.description }}" placeholder="Enter Job Description..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('description'), hasErrorFor('description')) }}
+            </div>
+            <div>
+                <input type="submit" value="Edit Job" class="btn btn-dark">
+            </div>
+        </form>
+    </card>
+
+@endsection

@@ -1,0 +1,89 @@
+@layout('layouts.app')
+
+@section('title')
+  JobPostr &mdash; Post Your Job
+@endsection
+
+@section('content')
+
+    <h1 class="text-center text-muted">Post A Job</h1>
+
+    <card class="card-body">
+        @if(flashMessage('message'))
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            {{ flashMessage('message') }}
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+        @endif
+
+        <form action="{{ route('JobController.create') }}" method="POST">
+            {{ csrfField() }}
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Job Title:</label>
+                <input type="text" class="form-control" name="title" value="{{ old('title', '') }}" placeholder="Enter Job Title..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Link URL:</label>
+                <input type="text" class="form-control" name="link" value="{{ old('link', '') }}" placeholder="Enter Job Link..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('link'), hasErrorFor('link')) }}
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="text-muted">Job Description:</label>
+                <input type="text" class="form-control" name="description" value="{{ old('description', '') }}" placeholder="Enter Job Description..." autofocus>
+                {{ elIf('<span class="alert alert-danger">$self</span>', getErrorFor('description'), hasErrorFor('description')) }}
+            </div>
+            <div>
+                <input type="submit" value="Submit A Job" class="btn btn-success">
+            </div>
+        </form>
+    </card>
+
+    @if(jobs.length > 0)
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <h2 class="text-muted">My Jobs</h2>
+            @each(job in jobs)
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">
+                            Title
+                        </th>
+                        <th scope="col">
+                            Description
+                        </th>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            #
+                        </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><a href="{{ job.link }}">{{ job.title }}</a></td>
+                        <td>{{ job.description }}</td>
+                        <td>
+                            <a href="{{ route('delete', { id: job.id }) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('edit', { id: job.id }) }}" class="btn btn-dark">Edit</a>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            @endeach
+        </div>
+    </div>
+    @endif
+    
+@endsection

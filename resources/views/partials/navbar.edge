@@ -12,7 +12,7 @@
                 </li>
                 @loggedIn
                 <li class="nav-item {{ request.url() == '/post' ? 'active' : '' }}">
-                    <a class="nav-link" href="/post">Jobs</a>
+                <a class="nav-link" href="{{ route('jobs') }}">Jobs</a>
                 </li>
                  <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth.user.username }}</a>
