@@ -50,24 +50,25 @@
       <div class="row">
         <div class="col-md-12 col-xs-12">
             <h2 class="text-muted">My Jobs</h2>
-            @each(job in jobs)
-                <table class="table">
+            <div class="card card-body mb-4">
+                <table class="table table-dark">
                     <thead>
                         <tr>
-                        <th scope="col">
-                            Title
-                        </th>
-                        <th scope="col">
-                            Description
-                        </th>
-                        <th scope="col">
-                            #
-                        </th>
-                        <th scope="col">
-                            #
-                        </th>
+                            <th scope="col">
+                                Title
+                            </th>
+                            <th scope="col">
+                                Description
+                            </th>
+                            <th scope="col">
+                                #
+                            </th>
+                            <th scope="col">
+                                #
+                            </th>
                         </tr>
                     </thead>
+                    @each(job in jobs)
                     <tbody>
                         <tr>
                         <td><a href="{{ job.link }}">{{ job.title }}</a></td>
@@ -78,10 +79,11 @@
                         <td>
                             <a href="{{ route('edit', { id: job.id }) }}" class="btn btn-dark">Edit</a>
                         </td>
-                        </tr>
-                    </tbody>
-                </table> 
-            @endeach
+                    </tr>
+                </tbody>
+                @endeach
+            </table>
+            </div>
         </div>
     </div>
     @endif

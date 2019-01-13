@@ -7,14 +7,21 @@ Home &mdash; Welcome to JobPostr
 
 @section('content')
   <div class="container mb-4">
-  <h1 class="text-center mt-3">All Jobs</h1>
-    <hr class="hr">
-    <ul class="list-group">
-      @each(job in jobs)
-      <li class="list-group-item">{{ job.title }}</li>
-      <li class="list-group-item"><a href="{{ job.link }}" target="_blank">{{ job.link }}</a></li>
-      <li class="list-group-item mb-4">{{ job.description }}</li>
-      @endeach
-    </ul>
+    @if(jobs.length == 0)
+      <div class="row justify-content-center align-items-center">
+      <h3 class="mt-5">Job List is empty &mdash; <a href="{{ route('jobs') }}">Create Job</a></h3>
+      </div>
+    @else
+    <h1 class="text-center mt-3">All Jobs</h1>
+      <hr class="hr">
+      <ul class="list-group">
+        @each(job in jobs)
+        <li class="list-group-item bg-dark text-light">{{ job.title }}</li>
+        <li class="list-group-item"><a href="{{ job.link }}" target="_blank">{{ job.link }}</a></li>
+        <li class="list-group-item mb-4">{{ job.description }}</li>
+        @endeach
+      </ul>
+    @endif
+    
   </div>
 @endsection
