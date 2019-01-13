@@ -17,3 +17,8 @@ main {
 .push {
   height: 150px;
 }
+
+.hr-1 {
+  width: 50px;
+  margin: 0 auto;
+}

@@ -12,8 +12,8 @@ Home &mdash; Welcome to JobPostr
       <h3 class="mt-5">Job List is empty &mdash; <a href="{{ route('jobs') }}">Create Job</a></h3>
       </div>
     @else
-    <h1 class="text-center mt-3">All Jobs</h1>
-      <hr class="hr">
+    <h1 class="text-center mt-3 text-muted">All Jobs</h1>
+      <hr class="hr-1 mb-3">
       <ul class="list-group">
         @each(job in jobs)
         <li class="list-group-item bg-dark text-light">{{ job.title }}</li>
